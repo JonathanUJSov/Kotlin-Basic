@@ -32,10 +32,35 @@ fun main(args: Array<String>) {
 }
 
 fun CrearReceta(){
-    println("Ingresar nombre de la receta: ")
-    var nameRec:String? = readLine()
-    println("Seleccione al menos un ingrediente")
 
+    var num:Int = 1
+
+    println("Ingresar nombre de la receta: ")
+    var nameRec:String? = readLine().toString()
+
+    println("Ingresa cantidad de ingredientes que deseas agregar: ")
+    var cant:Int = readLine()!!.toInt()
+    var array = IntArray(cant)
+
+    println("Selecciona los ingrediente")
+    Ingredientes()
+
+    while(num.compareTo(cant)<=0){
+        array[num] = readLine()!!.toInt()
+
+
+
+        println()
+
+    }
+
+
+
+
+}
+
+
+fun Ingredientes(){
     println("1.- Agua")
     println("2.- Leche")
     println("3.- Carne")
@@ -44,4 +69,9 @@ fun CrearReceta(){
     println("6.- Cereal")
     println("7.- Huevos")
     println("8.- Aceite")
+
+    var listIng:List<String?> = listOf<String?>("","Agua","Leche", "Carne", "Verduras",
+                                                "Frutas", "Cereal", "Huevos", "Aceite")
+
+
 }
