@@ -1,12 +1,13 @@
-var lisend:List<String?> = listOf<String?>("")
 
-var listIng:List<String?> = listOf<String?>("Agua","Leche", "Carne", "Verduras",
-        "Frutas", "Cereal", "Huevos", "Aceite")
-var rec:List<String?> = listOf()
 
 fun main(args: Array<String>) {
 
-    //
+    var lisend:List<String?> = listOf<String?>("")
+    var listSave:MutableList<List<String?>> = mutableListOf<List<String?>>()
+
+    var listIng:List<String?> = listOf<String?>("Agua","Leche", "Carne", "Verduras",
+            "Frutas", "Cereal", "Huevos", "Aceite")
+    var rec:List<String?> = listOf()
 
     println("Crea tu pripia receta aquí \t")
 
@@ -27,9 +28,53 @@ fun main(args: Array<String>) {
     var selInt:Int? = sel?.toInt()
 
     when(selInt){
-        1 -> CrearReceta()
+        1 -> {
+            var num:Int = 0
+
+            println("**************Crear nueva receta************* \t")
+
+            println("Ingresar nombre de la receta: ")
+            var nameRec:String? = readLine().toString()
+
+            println("Ingresa cantidad de ingredientes que deseas agregar: ")
+            var cant:Int = readLine()!!.toInt()
+            var array = IntArray(cant)
+
+            println("Selecciona los ingrediente")
+
+            var counter:Int = 1
+
+            for (ingredient in listIng)
+            {
+                println(counter.toString() + ".- " + ingredient)
+                counter++
+            }
+
+            while(num.compareTo(cant)<0){
+                array[num] = readLine()!!.toInt()
+                num++
+            }
+
+
+            println("=== Lista de Ingredientesa gregados ===\t")
+            for (inr in array)
+            {
+                lisend  = listOf<String?>(listIng[inr-1])
+                println(lisend)
+                //Recetas(nameRec,lisend)
+                listSave.add(1,lisend)
+            }
+
+            println("Receta guardada")
+        }
         2 -> {
             println("Ver mis recetas \t")
+            if(listSave!= null ){
+                for (li in listSave){
+                    println(li)
+                }
+            }else
+                println("No tiene recetas guardadas")
 
         }
         3 -> {
@@ -44,88 +89,3 @@ fun main(args: Array<String>) {
     }
 
 }
-
-fun CrearReceta(){
-
-    var num:Int = 0
-
-    println("**************Crear nueva receta************* \t")
-
-    println("Ingresar nombre de la receta: ")
-    var nameRec:String? = readLine().toString()
-
-    println("Ingresa cantidad de ingredientes que deseas agregar: ")
-    var cant:Int = readLine()!!.toInt()
-    var array = IntArray(cant)
-
-    println("Selecciona los ingrediente")
-    Ingredientes()
-
-    while(num.compareTo(cant)<0){
-        array[num] = readLine()!!.toInt()
-        num++
-    }
-
-
-    println("=== Lista de Ingredientesa gregados ===\t")
-    for (inr in array)
-    {
-        lisend  = listOf<String?>(listIng[inr-1])
-        println(lisend)
-        //Recetas(nameRec,lisend)
-    }
-
-    println("Receta guardada")
-
-}
-
-
-fun Ingredientes(){
-
-    var counter:Int = 1
-
-    for (ingredient in listIng)
-    {
-        println(counter.toString() + ".- " + ingredient)
-        counter++
-    }
-
-}
-
-
-fun saveRec(Title:String?, Receta:List<String?>){
-
-    var recetas:MutableMap<String?,List<String?>> = mutableMapOf<String?,List<String?>>()
-
-
-    var i:Int = 0
-    for(rr in Receta){
-        rec = listOf<String?>(rr)
-        recetas.put(Title,Receta)
-    }
-
-    i = i++
-
-}
-
-fun  Recetas(Titulo:String?, Receta:List<String?>)
-{
-    var i = 0
-
-    println("Nombre: " + Titulo + "\t")
-    println("Ingredientes")
-
-    for (inte in Receta)
-    {
-        println(inte)
-    }
-
-
-    /*var recetas:MutableMap<String?,List<String?>> = mutableMapOf<String?,List<String?>>()
-
-    recetas.put(Titulo,Receta)
-
-    println(recetas)*/
-
-}
-
