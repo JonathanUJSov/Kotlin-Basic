@@ -1,12 +1,13 @@
 
+var listIng:List<String?> = listOf<String?>("Agua","Leche", "Carne", "Verduras",
+        "Frutas", "Cereal", "Huevos", "Aceite")
 
 fun main(args: Array<String>) {
 
     var lisend:List<String?> = listOf<String?>("")
     var listSave:MutableList<List<String?>> = mutableListOf<List<String?>>()
 
-    var listIng:List<String?> = listOf<String?>("Agua","Leche", "Carne", "Verduras",
-            "Frutas", "Cereal", "Huevos", "Aceite")
+
     var rec:List<String?> = listOf()
 
     println("Crea tu pripia receta aquí \t")
@@ -41,14 +42,7 @@ fun main(args: Array<String>) {
             var array = IntArray(cant)
 
             println("Selecciona los ingrediente")
-
-            var counter:Int = 1
-
-            for (ingredient in listIng)
-            {
-                println(counter.toString() + ".- " + ingredient)
-                counter++
-            }
+            makeRecipe()
 
             while(num.compareTo(cant)<0){
                 array[num] = readLine()!!.toInt()
@@ -68,6 +62,8 @@ fun main(args: Array<String>) {
             println("Receta guardada")
         }
         2 -> {
+
+            viewRecipe("")
             println("Ver mis recetas \t")
             if(listSave!= null ){
                 for (li in listSave){
@@ -88,4 +84,25 @@ fun main(args: Array<String>) {
         }
     }
 
+}
+
+
+fun makeRecipe(){
+    var counter:Int = 1
+
+    for (ingredient in listIng)
+    {
+        println(counter.toString() + ".- " + ingredient)
+        counter++
+    }
+}
+
+
+fun viewRecipe(vall:String){
+    println("Ver mis recetas")
+
+    if (vall == null)
+    {
+        println("Por el momento no cuentas con recetas")
+    }
 }
